@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import Authors from "./components/Authors";
 import Books from "./components/Books";
 import NewBook from "./components/NewBook";
-import { ALL_AUTHORS } from "./queries";
+import { ALL_AUTHORS, ALL_BOOKS } from "./queries";
 
 const App = () => {
   const [page, setPage] = useState("authors");
-  const result = useQuery(ALL_AUTHORS);
+  const authorsResult = useQuery(ALL_AUTHORS);
+  const booksResult = useQuery(ALL_BOOKS);
 
   return (
     <div>
@@ -17,9 +18,12 @@ const App = () => {
         <button onClick={() => setPage("add")}>add book</button>
       </div>
 
-      <Authors authors={result.data?.allAuthors} show={page === "authors"} />
+      <Authors
+        authors={authorsResult.data?.allAuthors}
+        show={page === "authors"}
+      />
 
-      <Books show={page === "books"} />
+      <Books books={booksResult.data?.allBooks} show={page === "books"} />
 
       <NewBook show={page === "add"} />
     </div>

@@ -30,7 +30,7 @@ const Authors = ({ show, authors }) => {
         </tbody>
       </table>
       <h2>Set birthyear</h2>
-      <NewBirthYear />
+      <NewBirthYear authors={authors} />
     </div>
   );
 };
